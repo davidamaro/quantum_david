@@ -9,7 +9,7 @@
 #include <tclap/CmdLine.h>
 #include <device_functions.h>
 #include <cuda.h>
-#include "tools.cpp"
+#include <tools.cpp>
 #include "cuda_utils.cu"
 #include "model.cu"
 #include "ev_routines.cu"
@@ -20,7 +20,7 @@
 
 
 TCLAP::CmdLine cmd("Command description message", ' ', "0.1");
-TCLAP::ValueArg<unsigned int> CseedArg("","Cseed", "Random seed [0 for urandom]",false, 0,"unsigned int",cmd);
+// TCLAP::ValueArg<unsigned int> CseedArg("","Cseed", "Random seed [0 for urandom]",false, 0,"unsigned int",cmd);
 TCLAP::ValueArg<unsigned int> EseedArg("","Eseed", "Random seed [0 for urandom]",false, 0,"unsigned int",cmd);
 TCLAP::ValueArg<unsigned int> PARAMseedArg("","PARAMseed", "Random seed [0 for urandom]",false, 0,"unsigned int",cmd);
 TCLAP::ValueArg<int> nqubitsArg("q","qubits", "Number of qubits",false, 3,"int",cmd);
@@ -51,12 +51,13 @@ int main(int argc,char* argv[]) {
   void (*evolution)(double *, double *, double, itpp::vec, int, int);
   evolution=model::lattice;
 
-  int Cseed=CseedArg.getValue();int PARAMseed=PARAMseedArg.getValue();int Eseed=EseedArg.getValue();
+//   int Cseed=CseedArg.getValue();
+  int PARAMseed=PARAMseedArg.getValue();int Eseed=EseedArg.getValue();
   
-  if (Cseed == 0 ){
-    Random seed_uran1; 
-    Cseed=seed_uran1.strong();
-  }
+//   if (Cseed == 0 ){
+//     Random seed_uran1; 
+//     Cseed=seed_uran1.strong();
+//   }
   itpp::RNG_reset(Cseed);
   //ESTADO INICIAL C
   itpp::cvec cstate = itppextmath::RandomState(2);
