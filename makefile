@@ -6,6 +6,14 @@ GCCBIND = --compiler-bindir /usr/bin/g++-4.8.4
 
 
 INCLUDES := -I ../libs/
+
+
+# Carlos Pineda {{{
+ifeq ($(LOGNAME),carlosp)
+    INCLUDES := -I. -I/home/carlosp/investigacion/libs/ -I/home/carlosp/investigacion/libs/qubits-CUDA -I../
+endif
+# }}}
+
 # }}}
 
 
