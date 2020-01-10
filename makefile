@@ -31,3 +31,5 @@ opar :: oparts.cu
 	nvcc $(INCLUDES) $< -o $@ $(LDLIBS)
 dav :: dav.cu 
 	nvcc $(INCLUDES) $< -o $@ $(LDLIBS)
+# Repositorio: 
+#	url = git@github.com:davidamaro/quantum_david.git
